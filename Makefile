@@ -14,6 +14,7 @@ LIB = -lbluetooth -lboost_date_time -lboost_system -lpthread
 CFLAGS += -O2
 LDFLAGS = -s
 OBJDIR = obj
+SRCDIR = src
 OUT = bin/SBFspot
 
 OBJ = $(OBJDIR)/boost_ext.o $(OBJDIR)/misc.o $(OBJDIR)/strptime.o $(OBJDIR)/sunrise_sunset.o $(OBJDIR)/SBFNet.o $(OBJDIR)/Bluetooth.o \
@@ -38,7 +39,7 @@ out_release: before_release $(OBJ)
 	$(LD) -o $(OUT) $(OBJ)  $(LDFLAGS) $(LIB)
 
 
-$(OBJDIR)/%.o: %.cpp
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 	$(CXX) $(CFLAGS) -c $< -o $@
 
 

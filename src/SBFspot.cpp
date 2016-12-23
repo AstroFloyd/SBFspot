@@ -114,7 +114,7 @@ int main(int argc, char **argv)
   //Read the command line and store settings in config struct
   rc = parseCmdline(argc, argv, &cfg);
   if (rc == -1) return 1;	//Invalid commandline - Quit, error
-  if (rc == 1) return 0;	//Nothing to do - Quit, no error
+  if (rc == 1) return 2;	//Nothing to do - Quit with error
   
   //Read config file and store settings in config struct
   rc = GetConfig(&cfg);	//Config struct contains fullpath to config file
@@ -152,7 +152,7 @@ int main(int argc, char **argv)
       if ((cfg.forceInq == 0) && (cfg.isLight == 0))
         {
 	  if (quiet == 0) puts("Nothing to do... it's dark. Use -finq to force inquiry.");
-	  return 0;
+	  return 2;
         }
     }
   
